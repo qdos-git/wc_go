@@ -10,7 +10,8 @@ import (
 )
 
 //  The spec says Python standard library plus argparse only, but can non-ASCII bytes be counted without them?
-//  Go standard library is lighter due to static compilation; have to explicitly import more
+
+//  Go standard library is lighter due to static compilation; have to explicitly import more.
 
 //  Why is the world still using wc written in C?
 //    Backwards compat - see your point.
@@ -20,15 +21,17 @@ func main() {
 
     var args []bool
 
-    var string filename
+    var filename string
 
     var data []byte
 
-    var chars, words, lines, bytes int
+    var chars, words, lines, bytec int
+
+    fmt.Println(os.Args[1:])
 
     args, filename = handle_args(os.Args[1:])
 
-    data := load_data(filename)
+    data = load_data(filename)
 
     chars, words, lines, bytec = count_chars(data), count_words(data), count_lines(data), len(data)
 
@@ -37,34 +40,38 @@ func main() {
 }
 
 
-func handle_args(all_args []string)
+func handle_args(all_args []string) {
 
-    all_args := strings.Join(os.Args[1:], " ")
+    join_args := strings.Join(all_args, " ")
 
-    split_args := args.Split(str, " ")
+    fmt.Println(join_args)
+
+    split_args := strings.Split(join_args, " ")
 
     //  Assume last argument is filename.
 
-    filename := arr[len(arr)-1]
+    filename := split_args[len(split_args)-1]
     
+    var m_flag, w_flag, l_flag, c_flag, big_l_flag bool = false, false, false, false, false
+
     for _, char := range split_args[0] {
 
         switch char {
 
-        case "m":
-            m_flag := true
+        case 'm':
+            m_flag = true
 
-        case "w":
-            w_flag := true
+        case 'w':
+            w_flag = true
 
-        case "l":
-            l_flag := true
+        case 'l':
+            l_flag = true
 
-        case "c":
-            c_flag := true
+        case 'c':
+            c_flag = true
 
-        case "L":
-            big_l_flag := true
+        case 'L':
+            big_l_flag = true
 
         }
     }
@@ -73,39 +80,20 @@ func handle_args(all_args []string)
 
     if (!m_flag && !w_flag && !l_flag && !c_flag && !big_l_flag) {
 
-        m_flag, w_flag, l_flag, c_flag = true
+        m_flag, w_flag, l_flag, c_flag = true, true, true, true
     
     }
 
-    return [4]bool{m_flag, w_flag, l_flag, c_flag, big_l_flag}, filename
+    return []bool{m_flag, w_flag, l_flag, c_flag, big_l_flag}, filename
 
 }
 
 
 func load_data(filename string) {
 
-    chars := count_chars(data)
+    data, _ := ioutil.ReadFile(filename)
 
-    words := count_words(data)
-
-    lines := count_lines(data)
-
-    bytes := count_bytes(data)
-
-}
-
-
-func load_file(filename string) {
-
-    file, err := os.Open(filename)
-
-    if err != nil {
-
-        fmt.Println("Error reading file:", err)
-
-        return
-
-    }
+    return data
 
 }
 
@@ -114,7 +102,7 @@ func count_chars(data []byte) {
 
     //  Loop over text, count chars.
 
-    int ascii_count
+    var int ascii_count
 
     for _, b := range data {
         
@@ -131,11 +119,11 @@ func count_chars(data []byte) {
 }
 
 
-func count_words() {
+func count_words(data []byte) {
 
-    bool prev_byte_alpha
+    var bool prev_byte_alpha
 
-    int word_count
+    var int word_count
 
     for _, b := range data {
 
@@ -162,9 +150,9 @@ func count_words() {
 }
 
 
-func count_lines() {
+func count_lines(data []byte) {
 
-    int newlines_count
+    var int newlines_count
 
     for _, b := range data {
         
@@ -181,10 +169,11 @@ func count_lines() {
 }
 
 
-func output_data(int chars, int words, int lines, int bytec, []bool args) {
+func output_data(chars int, words int, lines int, bytec int, args []bool) {
 
-    
+          
 
 }
+
 
 
