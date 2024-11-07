@@ -26,13 +26,15 @@ func main() {
 
     // var chars, words, lines, bytec int
 
+    fmt.Println(os.Args[1:])
+
     args, filename := handle_args(os.Args[1:])
 
     data := load_data(filename)
 
     chars, words, lines, bytec := count_chars(data), count_words(data), count_lines(data), len(data)
 
-    output_data(chars, words, lines, bytec, args, filename)
+    output_data(chars, words, lines, bytec, args)
 
 }
 
@@ -41,6 +43,8 @@ func handle_args(all_args []string) ([]bool, string) {
 
     join_args := strings.Join(all_args, " ")
 
+    fmt.Println(join_args)
+
     split_args := strings.Split(join_args, " ")
 
     //  Assume last argument is filename.
@@ -48,8 +52,6 @@ func handle_args(all_args []string) ([]bool, string) {
     filename := split_args[len(split_args)-1]
     
     var m_flag, w_flag, l_flag, c_flag, big_l_flag bool = false, false, false, false, false
-
-    if split_args[0][0] == '-' {
 
     for _, char := range split_args[0] {
 
@@ -73,10 +75,13 @@ func handle_args(all_args []string) ([]bool, string) {
         }
     }
 
-}
-
     //  If all false, set flags to default context.
 
+    if (!m_flag && !w_flag && !l_flag && !c_flag && !big_l_flag) {
+
+        m_flag, w_flag, l_flag, c_flag = true, true, true, true
+    
+    }
 
     return []bool{m_flag, w_flag, l_flag, c_flag, big_l_flag}, filename
 
@@ -163,41 +168,11 @@ func count_lines(data []byte) (int) {
 }
 
 
-func output_data(chars int, words int, lines int, bytec int, args []bool, filename string) {
+func output_data(chars int, words int, lines int, bytec int, args []bool) {
 
-    if (!args[0] && !args[1] && !args[2] && !args[3] && !args[4]) {
+    fmt.Println(chars, words, lines, bytec)
 
-        fmt.Println(words, lines, chars, filename)
-    
-    } else {
-
-    if ( args[0] ) {
-
-      fmt.Printf("%d " words)
-
-    }
-    
-    if ( args[1] ) {
-
-      fmt.Printf("%d " lines)
-
-    }
-
-    if ( args[2] ) {
-
-      fmt.Printf("%d " bytes)
-
-    }
-
-    if ( args[3] ) {
-
-      fmt.Printf("%d " chars)
-
-    }
-
-    fmt.Println(filename)
-
-   }
+          
 
 }
 
