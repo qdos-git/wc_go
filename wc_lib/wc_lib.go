@@ -119,7 +119,7 @@ func count_words(data []byte) int {
 
 	for _, b := range data {
 
-		if prev_byte_alpha == true && (b == 63 || b == 58 || b == 59 || b == 46 || b == 44 || b == 41 || b == 32 || b == 10 ) {
+		if prev_byte_alpha == true && (b == 63 || b == 58 || b == 59 || b == 46 || b == 44 || b == 41 || b == 32 || b == 10) {
 
 			word_count++
 
