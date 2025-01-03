@@ -1,6 +1,14 @@
 
 Test files:
 
-Lorem ipsum
-Empty file
-File with no ASCII data
+     Lorem ipsum
+     Empty file
+     File with no ASCII data
+
+
+
+Test plan:
+
+     No filename
+     Default, no args -> all expected output
+     

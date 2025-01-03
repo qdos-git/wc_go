@@ -15,6 +15,7 @@ import (
 
 func Wc_core(args []string) (int, int, int, int, []bool, string) {
 
+ 	fmt.Println(args)
 	// var args []bool
 
 	// var filename string
@@ -23,7 +24,7 @@ func Wc_core(args []string) (int, int, int, int, []bool, string) {
 
 	// var chars, words, lines, bytec int
 
-	args_loaded, filename := handle_args(args[1:])
+	args_loaded, filename := handle_args(args)
 
 	data := load_data(filename)
 
@@ -33,7 +34,15 @@ func Wc_core(args []string) (int, int, int, int, []bool, string) {
 
 func handle_args(all_args []string) ([]bool, string) {
 
+ 	fmt.Println(all_args)
+
+	//  Join all arguments with a space because... can't remember.
+
 	join_args := strings.Join(all_args, " ")
+
+	//  Maybe some text processing was suppose to go here.
+
+	//  Split them back up with a space!
 
 	split_args := strings.Split(join_args, " ")
 
@@ -41,7 +50,9 @@ func handle_args(all_args []string) ([]bool, string) {
 
 	filename := split_args[len(split_args)-1]
 
-	var m_flag, w_flag, l_flag, c_flag, big_l_flag bool = false, false, false, false, false
+	m_flag, w_flag, l_flag, c_flag, big_l_flag := false, false, false, false, false
+
+	//  If first character of first string is a dash (no multidash possible here).
 
 	if split_args[0][0] == '-' {
 

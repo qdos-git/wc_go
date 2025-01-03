@@ -7,6 +7,6 @@ import (
 
 func main() {
 
-	wc_lib.Output_data(wc_lib.Wc_core(os.Args))
+	wc_lib.Output_data(wc_lib.Wc_core(os.Args[1:]))
 
 }
