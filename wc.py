@@ -7,8 +7,4 @@ import subprocess
 
 subprocess.run(["go", "run", "wc.go", sys.argv[1]])
 
-##  Note: above untested.
 
-##  How Python really is...
-
-exec(go run wc.go)
