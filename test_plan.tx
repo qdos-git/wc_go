@@ -4,6 +4,7 @@ Test files:
      Lorem ipsum
      Empty file
      File with no ASCII data
+     UTF-16 file
 
 
 
@@ -11,4 +12,4 @@ Test plan:
 
      No filename
      Default, no args -> all expected output
-     
+     Various permutations of args

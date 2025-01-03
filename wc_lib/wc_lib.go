@@ -15,7 +15,6 @@ import (
 
 func Wc_core(args []string) (int, int, int, int, []bool, string) {
 
- 	fmt.Println(args)
 	// var args []bool
 
 	// var filename string
@@ -33,8 +32,6 @@ func Wc_core(args []string) (int, int, int, int, []bool, string) {
 }
 
 func handle_args(all_args []string) ([]bool, string) {
-
- 	fmt.Println(all_args)
 
 	//  Join all arguments with a space because... can't remember.
 
@@ -102,7 +99,7 @@ func count_chars(data []byte) int {
 
 	for _, b := range data {
 
-		if b >= 32 && b <= 126 {
+		if ( b >= 32 && b <= 126 ) || ( b >= 9 && b <= 13 ) {
 
 			ascii_count++
 
@@ -122,7 +119,7 @@ func count_words(data []byte) int {
 
 	for _, b := range data {
 
-		if prev_byte_alpha == true && b == 10 {
+		if prev_byte_alpha == true && (b == 63 || b == 58 || b == 59 || b == 46 || b == 44 || b == 41 || b == 32 || b == 10 ) {
 
 			word_count++
 
@@ -139,6 +136,8 @@ func count_words(data []byte) int {
 		}
 
 	}
+
+	fmt.Println(word_count)
 
 	return word_count
 

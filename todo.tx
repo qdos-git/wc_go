@@ -1,0 +1,3 @@
+
+
+	- pad numerical output to align with wc's all-numbers-padding-to-length-of-largest-number style
