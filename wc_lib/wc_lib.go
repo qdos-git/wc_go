@@ -3,7 +3,6 @@ package wc_lib
 import (
 	"fmt"
 	"io/ioutil"
-	"os"
 	"strings"
 )
 
@@ -14,7 +13,7 @@ import (
 //  Why is the world still using wc written in C?
 //    Backwards compat - see your point.
 
-func wc_core(args []string) {
+func Wc_core(args []string) (int, int, int, int, []bool, string) {
 
 	// var args []bool
 
@@ -24,11 +23,11 @@ func wc_core(args []string) {
 
 	// var chars, words, lines, bytec int
 
-	args, filename := handle_args(args)
+	args_loaded, filename := handle_args(args[1:])
 
 	data := load_data(filename)
 
-	return count_chars(data), count_words(data), count_lines(data), len(data)
+	return count_chars(data), count_words(data), count_lines(data), len(data), args_loaded, filename
 
 }
 
@@ -49,7 +48,7 @@ func handle_args(all_args []string) ([]bool, string) {
 		for _, char := range split_args[0] {
 
 			switch char {
-p
+
 			case 'm':
 				m_flag = true
 
@@ -152,7 +151,7 @@ func count_lines(data []byte) int {
 
 }
 
-func output_data(chars int, words int, lines int, bytec int, args []bool, filename string) {
+func Output_data(chars int, words int, lines int, bytec int, args []bool, filename string) {
 
 	if !args[0] && !args[1] && !args[2] && !args[3] && !args[4] {
 

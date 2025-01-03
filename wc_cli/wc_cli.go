@@ -1,15 +1,12 @@
 package main
 
-import(
+import (
+	"os"
 	"wc_lib"
 )
 
-
 func main() {
 
-	chars, words, lines, bytec := wc_core(os.Args[1:])
+	wc_lib.Output_data(wc_lib.Wc_core(os.Args))
 
-	output_data(chars, words, lines, bytec, args, filename)
-	
 }
-
