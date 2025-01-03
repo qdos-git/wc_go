@@ -1,4 +1,6 @@
 
+- type up readme.md
+
 - generate data for UTF-16 tests
 
 - pad numerical output to align with wc's
