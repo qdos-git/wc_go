@@ -79,7 +79,7 @@ func handle_args(all_args []string) ([]bool, string) {
 
 	//  If all false, set flags to default context.
 
-	return []bool{m_flag, w_flag, l_flag, c_flag, big_l_flag}, filename
+	return []bool{c_flag, m_flag, l_flag, big_l_flag, w_flag}, filename
 
 }
 
@@ -137,7 +137,7 @@ func count_words(data []byte) int {
 
 	}
 
-	fmt.Println(word_count)
+	// fmt.Println(word_count)
 
 	return word_count
 
@@ -163,9 +163,11 @@ func count_lines(data []byte) int {
 
 func Output_data(chars int, words int, lines int, bytec int, args []bool, filename string) {
 
-	if !args[0] && !args[1] && !args[2] && !args[3] && !args[4] {
+	// return []bool{c_flag, m_flag, l_flag, big_l_flag, w_flag}, filename
 
-		fmt.Println(words, lines, chars, filename)
+	if !args[2] && !args[4] && !args[1] {
+
+		fmt.Println(lines, words, bytec, filename)
 
 	} else {
 
