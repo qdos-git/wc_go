@@ -63,7 +63,13 @@ Tests have been written for the following input data
 
 To demonstrate that their is a better way, for the Python community, a
 basic Python wrapper has been written to call this wc Go
-implementation as a binary.
+implementation as a binary. This could be useful in the case of
+distributing a multiarch binary.
+
+A CLI callable from any directory has then been setup, via a carefully
+crafted pyproject.toml file.
+
+See python_packaging.md for more info.
 
 
 # Original spec

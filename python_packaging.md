@@ -24,3 +24,5 @@ various PEP standards, and is what the end-user will download and
 install. The files will only need to be moved to a location on the
 target system; this is a built distribution.
 
+By carefully configuring pyproject.toml, it is possible to then call
+the Python script that calls the Go binary, from anywhere.
