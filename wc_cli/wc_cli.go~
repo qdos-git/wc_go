@@ -1,7 +1,0 @@
-package main
-
-func main() {
-
-	wc_core(os.Args[1:])
-
-}
